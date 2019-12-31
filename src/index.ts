@@ -6,8 +6,6 @@ import rootSchema from "./graphql/schema/rootSchema";
 
 const app = express();
 
-
-
 // @ts-ignore
 app.use("/graphql", expressGraphQL({
     schema: rootSchema,
@@ -17,5 +15,5 @@ app.use("/graphql", expressGraphQL({
 
 app.listen(4000, () => {
     // tslint:disable-next-line:no-console
-    console.log("sever running");
+    console.log("sever running on port 4000");
 });

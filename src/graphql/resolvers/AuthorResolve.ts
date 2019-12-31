@@ -3,6 +3,7 @@ import authors from "../entitys/authors";
 export default class AuthorResolve {
 
     static getAuthors(){
+
         return authors;
     }
     static getAuthorId(id){

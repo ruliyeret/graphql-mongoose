@@ -4,17 +4,10 @@ import authors from "../entitys/authors";
 
 const BookType = new GraphQLObjectType({
     name: "Book",
-    description : "This represent book written by autor",
+    description : "This represent book written by author",
     fields: () => ({
         id: { type: GraphQLNonNull(GraphQLInt)},
-        name: { type: GraphQLString},
-        authorId: { type: GraphQLNonNull(GraphQLInt)},
-        author: {
-            type: AuthorType,
-            resolve: (book) =>{
-                return authors.find((author) => author.id == book.id)
-            }
-        }
+        name: { type: GraphQLString}
     })
 });
 

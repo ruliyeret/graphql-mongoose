@@ -54,7 +54,7 @@ const RootMutation = new GraphQLObjectType({
               authorId: { type: GraphQLNonNull(GraphQLInt)}
           },
           resolve: (parent, args) => {
-              BookResolves.addBook(args.name, args.authorId);
+              return BookResolves.addBook(args.name, args.authorId);
           }
       },
       addAuthor: {
@@ -65,7 +65,7 @@ const RootMutation = new GraphQLObjectType({
               name: {type : GraphQLNonNull(GraphQLString)}
           },
           resolve: (parent, args) => {
-              AuthorResolve.addAuthor(args.authorId, args.name);
+             return  AuthorResolve.addAuthor(args.id, args.name);
           }
       }
 
