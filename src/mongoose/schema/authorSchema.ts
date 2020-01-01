@@ -1,11 +1,16 @@
 
 import * as mongoose from 'mongoose';
-import {Schema} from "mongoose";
+import {Document, Schema} from "mongoose";
 
-const authorSchema =  new mongoose.Schema({
+
+export interface IAuthor extends Document{
+    id: number;
+    name: string;
+}
+const authorSchema =  new Schema({
     id: {type : Schema.Types.ObjectId, require: true},
     name: {type:String}
 });
 
-const authorModel = mongoose.model("Author", authorSchema);
-export default authorModel;
+const DbAuthor = mongoose.model<IAuthor>("Author", authorSchema);
+export default  DbAuthor;

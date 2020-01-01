@@ -41,7 +41,7 @@ const RootQuery = new GraphQLObjectType({
     })
 });
 
-
+const a = 4;
 const RootMutation = new GraphQLObjectType({
     name: "Mutation",
     description: "Root mutation",
@@ -50,6 +50,7 @@ const RootMutation = new GraphQLObjectType({
           type: BookType,
           description: "Add a book",
           args: {
+
               name: {type: GraphQLNonNull(GraphQLString)},
               authorId: { type: GraphQLNonNull(GraphQLInt)}
           },

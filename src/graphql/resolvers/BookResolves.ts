@@ -1,19 +1,19 @@
-import books from "../entitys/books";
+import DbBook from "../../mongoose/schema/bookSchema";
 
 
 export default class BookResolves {
 
     static getBooks(){
-        return books;
+        return DbBook.find({});
     }
 
-    static getSingleBook(id){
-        return books.find(book => book.id == id);
+     static  async getSingleBook(id){
+        return await DbBook.find({id: id});
     }
 
     static addBook(name: string, authorId: number){
-        const book = {id: this.getBooks().length + 1, name: name, authorId: authorId};
-        this.getBooks().push(book);
+        const book = new DbBook({id: 3, name: name, authorId: authorId});
+        book.save();
         return book;
     }
 }
