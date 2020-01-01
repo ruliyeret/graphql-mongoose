@@ -10,7 +10,7 @@ export interface IAuthor extends Document{
 const authorSchema =  new Schema({
     id: {type : Schema.Types.ObjectId, require: true},
     name: {type:String}
-});
+}, {versionKey: false});
 
 const DbAuthor = mongoose.model<IAuthor>("Author", authorSchema);
 export default  DbAuthor;

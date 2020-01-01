@@ -4,6 +4,9 @@ import BookResolves from "../resolvers/BookResolves";
 import AuthorType from "../types/Author";
 import AuthorResolve from "../resolvers/AuthorResolve";
 
+
+// TODO: to separate the queries to directory (book / author) and also the mutation types and
+//  implement in RootQuery and RootMutation
 const RootQuery = new GraphQLObjectType({
     name: "Query",
     description: "Root query",
@@ -41,7 +44,6 @@ const RootQuery = new GraphQLObjectType({
     })
 });
 
-const a = 4;
 const RootMutation = new GraphQLObjectType({
     name: "Mutation",
     description: "Root mutation",
@@ -50,7 +52,6 @@ const RootMutation = new GraphQLObjectType({
           type: BookType,
           description: "Add a book",
           args: {
-
               name: {type: GraphQLNonNull(GraphQLString)},
               authorId: { type: GraphQLNonNull(GraphQLInt)}
           },
@@ -58,6 +59,26 @@ const RootMutation = new GraphQLObjectType({
               return BookResolves.addBook(args.name, args.authorId);
           }
       },
+      deleteBookByName: {
+          type: BookType,
+          description: "Delete a book from db",
+          args:{
+              name: {type:GraphQLNonNull(GraphQLString)}
+          },
+          resolve: (parent, args) => {
+              return BookResolves.deleteBookByName(args.name)
+          }
+      },
+        deleteBookByAuthorId: {
+            type: BookType,
+            description: "Delete a book from db",
+            args:{
+                authorId: {type:GraphQLNonNull(GraphQLInt)}
+            },
+            resolve: (parent, args) => {
+                return BookResolves.deleteBookbByAuthorId(args.authorId)
+            }
+        },
       addAuthor: {
           type: AuthorType,
           description: "Add a author of book",

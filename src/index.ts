@@ -2,6 +2,8 @@ import express from "express";
 import expressGraphQL from "express-graphql";
 import mongoose from "mongoose";
 import rootSchema from "./graphql/schema/rootSchema";
+import books from "./graphql/entitys/books";
+import DbBook from "./mongoose/schema/bookSchema";
 
 
 const  connectDb = () => {
@@ -23,6 +25,11 @@ app.use("/graphql", expressGraphQL({
     graphiql: true
     }
 ));
+
+app.use("/", async function(req, res){
+    let a =  await DbBook.find({})
+    res.send(a);
+});
 
 
 app.listen(4000, () => {
