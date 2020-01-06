@@ -1,18 +1,19 @@
-import authors from "../entitys/authors";
+import DbAuthor from "../../mongoose/schema/authorSchema";
 
 export default class AuthorResolve {
 
     static getAuthors(){
 
-        return authors;
+        return DbAuthor.find({});
     }
     static getAuthorId(id){
-        return authors.find(author => author.id == id);
+        return DbAuthor.find(author => author.id == id);
     }
 
     static addAuthor(authorId: number, name: string){
-        const author = {id: authorId, name: name};
-        this.getAuthors().push(author);
+        const author = new DbAuthor({id: authorId, name: name});
+        author.save(res =>console.log("author added: " + author)).
+        catch(err => console.log("Failed to add mew author"));
         return author;
     }
 }

@@ -1,13 +1,11 @@
-import {GraphQLInt, GraphQLNonNull, GraphQLObjectType, GraphQLString} from "graphql";
-import AuthorType from "./Author";
-import authors from "../entitys/authors";
-
-const BookType = new GraphQLObjectType({
+import {GraphQLID, GraphQLInt, GraphQLObjectType, GraphQLString} from "graphql";
+const BookType : GraphQLObjectType = new GraphQLObjectType({
     name: "Book",
     description : "This represent book written by author",
     fields: () => ({
-        id: { type: GraphQLNonNull(GraphQLInt)},
-        name: { type: GraphQLString}
+        id: { type: GraphQLID},
+        name: { type: GraphQLString},
+        authorId: {type: GraphQLInt}
     })
 });
 

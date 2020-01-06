@@ -1,6 +1,6 @@
 import DbBook from "../../mongoose/schema/bookSchema";
-import books from "../entitys/books";
-
+import {pubsub} from "../../index";
+import BookType from "../types/Books";
 
 export default class BookResolves {
 
@@ -15,13 +15,13 @@ export default class BookResolves {
     static addBook(name: string, authorId: number){
         const book = new DbBook({name: name, authorId: authorId});
         console.log("Adding a book: " + book);
-        book.save((result, err) =>{
-            if(err){
-                console.log("query failed: " + err);
-                return;
+        pubsub.publish("newBook", {"addBook": book});
+        book.save((result) =>{
+            if(result){
+                console.log("Entity saved: " + book);
             }
-            console.log("Entity saved: " + book);
         });
+
         return book;
     }
 
@@ -31,7 +31,7 @@ export default class BookResolves {
         return deletedBook;
     }
 
-    static  async deleteBookbByAuthorId(authorId: number){
+    static  async deleteBookByAuthorId(authorId: number){
         const deletedBook = await DbBook.deleteMany({authorId: authorId});
         return deletedBook;
     }
