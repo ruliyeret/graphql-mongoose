@@ -6,7 +6,7 @@ import {PubSub} from "graphql-subscriptions";
 import {ApolloServer} from 'apollo-server-express';
 import * as http from "http";
 import { DBbookListenr} from "./mongoose/listener/DBbookWatch";
-import {DBauthorListenr} from "./mongoose/listener/DBauthorWatch";
+import {DBActorListenr} from "./mongoose/listener/DBActorWatch";
 
 
 export const pubsub = new PubSub();
@@ -20,7 +20,7 @@ const  connectDb = () => {
     db.once('open', () =>{
         console.log("mongo db started");
         DBbookListenr();
-        DBauthorListenr();
+        DBActorListenr();
     });
 
 };
@@ -38,9 +38,8 @@ const httpServer = http.createServer(app);
 server.installSubscriptionHandlers(httpServer);
 
 httpServer.listen({ port: PORT }, () => {
-        console.log(server.subscriptionsPath)
         console.log(`🚀 Server ready at http://localhost:3000/graphql`);
-       console.log(`🚀 Subscriptions ready at ws://localhost:3000/subscription`);
+        console.log(`🚀 Subscriptions ready at ws://localhost:3000/subscription`);
         connectDb();
     }
 );

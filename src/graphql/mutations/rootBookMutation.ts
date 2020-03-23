@@ -8,10 +8,10 @@ export const RootBookMutation = {
         description: "Add a book",
         args: {
             name: {type: GraphQLNonNull(GraphQLString)},
-            authorId: { type: GraphQLNonNull(GraphQLInt)}
+            ActorId: { type: GraphQLNonNull(GraphQLInt)}
         },
         resolve: (parent, args) => {
-            return BookResolves.addBook(args.name, args.authorId);
+            return BookResolves.addBook(args.name, args.ActorId);
         }
     },
     deleteBookByName: {

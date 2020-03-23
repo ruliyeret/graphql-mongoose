@@ -3,13 +3,13 @@ import {Schema, Document} from "mongoose";
 
 export interface IBook extends Document{
     name: string;
-    authorId: number;
+    ActorId: number;
 }
 
     // id: {type: mongoose.Types.ObjectId},
 const bookSchema = new Schema({
     name: { type: String},
-    authorId: {type: Number},
+    ActorId: {type: Number},
 
 },{versionKey: false})
 

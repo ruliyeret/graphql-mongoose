@@ -2,12 +2,12 @@ class Book {
 
      private _id: number;
      private _name: string;
-     private _authorId: number;
+     private _ActorId: number;
 
-    constructor(id: number, name:string, authorId: number){
+    constructor(id: number, name:string, ActorId: number){
         this._id = id;
         this._name = name;
-        this._authorId = authorId;
+        this._ActorId = ActorId;
     }
 
 
@@ -23,16 +23,16 @@ class Book {
         return this._name;
     }
 
-    get authorId(): number {
-        return this._authorId;
+    get ActorId(): number {
+        return this._ActorId;
     }
 
     set name(value: string) {
         this._name = value;
     }
 
-    set authorId(value: number) {
-        this._authorId = value;
+    set ActorId(value: number) {
+        this._ActorId = value;
     }
 
 }

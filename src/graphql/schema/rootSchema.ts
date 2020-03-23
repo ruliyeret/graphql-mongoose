@@ -1,13 +1,12 @@
 import { GraphQLObjectType, GraphQLSchema, GraphQLString} from "graphql";
 import {RootBookQuery} from "../queries/rootBooksQueries";
-import {RootAuthorQuery} from "../queries/rootAuthorQuiers";
-import {RootAuthorMutation} from "../mutations/rootAuthorMutation";
+import {RootActorQuery} from "../queries/rootActorQuiers";
+import {RootActorMutation} from "../mutations/rootActorMutation";
 import {RootBookMutation} from "../mutations/rootBookMutation";
 import {RootBookSubscription} from "../subscriptions/bookSubscription";
-import BookType from "../types/Books";
 
 
-// TODO: to separate the queries to directory (book / author) and also the mutation types and
+// TODO: to separate the queries to directory (book / Actor) and also the mutation types and
 //  implement in RootQuery and RootMutation
 
 
@@ -20,7 +19,7 @@ const RootQuery = new GraphQLObjectType({
     description: "Root query",
     fields: () => ({
         ...RootBookQuery,
-        ...RootAuthorQuery
+        ...RootActorQuery
     })
 });
 
@@ -30,7 +29,7 @@ const RootMutation = new GraphQLObjectType({
     description: "Root mutation",
     fields: () => ({
         ...RootBookMutation,
-        ...RootAuthorMutation
+        ...RootActorMutation
     })
 
 });

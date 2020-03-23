@@ -1,6 +1,6 @@
-import authorSchema from "../schema/authorSchema";
+import ActorSchema from "../schema/ActorSchema";
 
-class Author {
+class Actor {
     private _id: number;
     private _name: string;
 
@@ -25,4 +25,4 @@ class Author {
     }
 }
 
-export default Author;
+export default Actor;

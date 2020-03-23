@@ -1,30 +1,30 @@
 import BookType from "../types/Books";
 import {GraphQLInt, GraphQLNonNull, GraphQLString} from "graphql";
 import BookResolves from "../resolvers/BookResolves";
-import AuthorType from "../types/Author";
-import AuthorResolve from "../resolvers/AuthorResolve";
+import ActorType from "../types/Actor";
+import ActorResolve from "../resolvers/ActorResolve";
 
-export const RootAuthorMutation = {
+export const RootActorMutation = {
 
-    deleteBookByAuthorId: {
+    deleteBookByActorId: {
         type: BookType,
         description: "Delete a book from db",
         args:{
-            authorId: {type:GraphQLNonNull(GraphQLInt)}
+            ActorId: {type:GraphQLNonNull(GraphQLInt)}
         },
         resolve: (parent, args) => {
-            return BookResolves.deleteBookByAuthorId(args.authorId)
+            return BookResolves.deleteBookByActorId(args.ActorId)
         }
     },
-    addAuthor: {
-        type: AuthorType,
-        description: "Add a author of book",
+    addActor: {
+        type: ActorType,
+        description: "Add a Actor of book",
         args: {
             id: { type: GraphQLNonNull(GraphQLInt)},
             name: {type : GraphQLNonNull(GraphQLString)}
         },
         resolve: (parent, args) => {
-            return  AuthorResolve.addAuthor(args.id, args.name);
+            return  ActorResolve.addActor(args.id, args.name);
         }
     }
 }

@@ -1,4 +1,3 @@
-// @ts-ignore
 import BookType from "../types/Books";
 import {pubsub} from "../../index";
 
