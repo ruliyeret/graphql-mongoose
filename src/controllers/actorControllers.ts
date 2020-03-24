@@ -32,14 +32,12 @@ export class Controllers {
         const url  = 'https://swapi.co/api/people/' +actorID;
         fetch(url)
             .then(response => {
-                console.log("in the fetch method");
                 if (!response.ok) {
                     throw new Error('Failed to fetch.');
                 }
                 return response.json();
             })
             .then(data => {
-                console.log("Got the data from api");
                 let actor = ActorModel({
                     actorId:data.id,
                     name: data.name,
