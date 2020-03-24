@@ -20,18 +20,18 @@ const ActorSchema =  new Schema({
 
 let ActorModel:any = mongoose.model("Actor", ActorSchema);
 
-ActorModel['getAll'] = () => {
+ActorModel.getAll = () => {
     return ActorModel.find({});
 };
 
-ActorModel['add'] = (actorToAdd) =>{
-    let a  = actorToAdd.save().then(res=>{console.log("actor saved successfully")}).catch(err => {
-        console.log(err)
+ActorModel.add = (actorToAdd) =>{
+    let actor = actorToAdd.save().then(res=>{console.log("Actor saved successfully")}).catch(err => {
+        console.log("Failed to save actor" + err);
     });
-    return  a;
+    return  actor;
 };
 
-ActorModel['delete'] = (actorId) => {
+ActorModel.delete = (actorId) => {
     ActorModel.deleteOne({id: actorId});
 };
 export default  ActorModel;
