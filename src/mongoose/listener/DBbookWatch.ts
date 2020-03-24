@@ -8,4 +8,4 @@ export const DBbookListenr = () =>{
             " collection: " + data.ns.coll +
             " entity: " + JSON.stringify(data.fullDocument));
     });
-}
+};

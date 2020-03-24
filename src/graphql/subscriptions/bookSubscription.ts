@@ -9,4 +9,4 @@ export const RootBookSubscription = {
             return pubsub.asyncIterator([topic]);
         }
     }
-}
+};

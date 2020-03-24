@@ -3,34 +3,34 @@ import {pubsub} from "../../index";
 
 export default class BookResolves {
 
-    static getBooks(){
+    public static getBooks(){
         return DbBook.find({});
     }
 
-     static  async getSingleBook(id){
+     public static  async getSingleBook(id){
         return await DbBook.find({id: id});
     }
 
-    static addBook(name: string, ActorId: number){
+    public static addBook(name: string, ActorId: number){
         const book = new DbBook({name: name, ActorId: ActorId});
         console.log("Adding a book: " + book);
-        book.save((result) =>{
-            if(result){
-                pubsub.publish("newBook", {"addBook": book});
-                console.log("Entity saved: " + book);
-            }
-        });
+        // book.save((result) =>{
+        //     if(result){
+        //         pubsub.publish("newBook", {"addBook": book});
+        //         console.log("Entity saved: " + book);
+        //     }
+        // });
 
         return book;
     }
 
-    static  async deleteBookByName(bookName: string){
+    public static  async deleteBookByName(bookName: string){
         const deletedBook = await DbBook.deleteOne({name:bookName});
         console.log("Deleted book from db: " + deletedBook);
         return deletedBook;
     }
 
-    static  async deleteBookByActorId(ActorId: number){
+    public static  async deleteBookByActorId(ActorId: number){
         const deletedBook = await DbBook.deleteMany({ActorId: ActorId});
         return deletedBook;
     }

@@ -13,7 +13,7 @@ export const RootActorMutation = {
             ActorId: {type:GraphQLNonNull(GraphQLInt)}
         },
         resolve: (parent, args) => {
-            return BookResolves.deleteBookByActorId(args.ActorId)
+            return BookResolves.deleteBookByActorId(args.ActorId);
         }
     },
     addActor: {
@@ -27,4 +27,4 @@ export const RootActorMutation = {
             return  ActorResolve.addActor(args.id, args.name);
         }
     }
-}
+};

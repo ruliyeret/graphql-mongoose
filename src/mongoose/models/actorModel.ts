@@ -16,20 +16,22 @@ const ActorSchema =  new Schema({
     name: {type:String},
     height: {type: Number},
     gender: {type: String},
-    movieCount: {type: Number}
 }, {collection:"Actor", versionKey: false});
 
 let ActorModel:any = mongoose.model("Actor", ActorSchema);
 
 ActorModel['getAll'] = () => {
     return ActorModel.find({});
-}
+};
 
 ActorModel['add'] = (actorToAdd) =>{
-    return actorToAdd.save();
-}
+    let a  = actorToAdd.save().then(res=>{console.log("actor saved successfully")}).catch(err => {
+        console.log(err)
+    });
+    return  a;
+};
 
 ActorModel['delete'] = (actorId) => {
-    ActorModel.deleteOne({id: actorId})
-}
+    ActorModel.deleteOne({id: actorId});
+};
 export default  ActorModel;

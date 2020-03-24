@@ -21,7 +21,7 @@ export const RootBookMutation = {
             name: {type:GraphQLNonNull(GraphQLString)}
         },
         resolve: (parent, args) => {
-            return BookResolves.deleteBookByName(args.name)
+            return BookResolves.deleteBookByName(args.name);
         }
     },
-}
+};

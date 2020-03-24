@@ -6,4 +6,4 @@ export const DBActorListenr = () => {
             " collection: " + data.ns.coll +
             " entity: " + JSON.stringify(data.fullDocument));
     });
-}
+};

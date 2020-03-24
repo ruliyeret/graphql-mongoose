@@ -7,7 +7,7 @@ export const ActorSubscription = {
     addActor: {
         type: ActorType,
         subscribe: () =>{
-            return pubsub.asyncIterator([topic])
+            return pubsub.asyncIterator([topic]);
         }
     }
-}
+};
