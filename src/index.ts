@@ -5,10 +5,9 @@ import DbBook from "./mongoose/models/bookModel";
 import {PubSub} from "graphql-subscriptions";
 import {ApolloServer} from 'apollo-server-express';
 import * as http from "http";
-import { DBbookListenr} from "./mongoose/listener/DBbookWatch";
-import {DBActorListenr} from "./mongoose/listener/DBActorWatch";
-import ActorModule from "./mongoose/models/actorModel";
-
+import cors from "cors";
+import bodyParser = require("body-parser");
+import ActorRouter from "./routes/actorRoute"
 
 export const pubsub = new PubSub();
 const  connectDb = () => {
@@ -27,8 +26,10 @@ const  connectDb = () => {
 };
 const PORT = 3001;
 const app = express();
-
-
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/actor', ActorRouter);
 
 const server = new ApolloServer({schema:rootSchema});
 server.applyMiddleware({ app });
@@ -46,9 +47,11 @@ httpServer.listen({ port: PORT }, () => {
 );
 
 app.use("/", async function(req, res){
-    let a =  await DbBook.find({});
-    res.send(a);
+
+    res.send("");
 });
+
+
 
 
 const httpRequest = (url) =>{

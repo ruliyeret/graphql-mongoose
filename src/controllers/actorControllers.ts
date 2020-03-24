@@ -1,6 +1,6 @@
 import ActorModel from "../mongoose/models/actorModel";
 
-class Controllers {
+export class Controllers {
 
     static  async getAllActors(req, res) {
         try {
@@ -21,7 +21,7 @@ class Controllers {
         }
     }
 
-    static async addASinglAector(req, res) {
+    static async addASinglActor(req, res) {
         let actor = ActorModel({
             id: req.body.actor.id,
             name: req.body.actor.name,
