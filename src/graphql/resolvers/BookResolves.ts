@@ -1,4 +1,4 @@
-import DbBook from "../../mongoose/schema/bookSchema";
+import DbBook from "../../mongoose/models/bookModel";
 import {pubsub} from "../../index";
 
 export default class BookResolves {

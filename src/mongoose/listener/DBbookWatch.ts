@@ -1,4 +1,4 @@
-import DbBook from "../schema/bookSchema";
+import DbBook from "../models/bookModel";
 import {pubsub} from "../../index";
 
 export const DBbookListenr = () =>{

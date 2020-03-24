@@ -1,4 +1,4 @@
-import ActorSchema from "../schema/ActorSchema";
+import ActorSchema from "../models/actorModel";
 
 class Actor {
     private _id: number;

@@ -7,11 +7,11 @@ export interface IBook extends Document{
 }
 
     // id: {type: mongoose.Types.ObjectId},
-const bookSchema = new Schema({
+const bookModel = new Schema({
     name: { type: String},
     ActorId: {type: Number},
 
 },{versionKey: false})
 
-const DbBook = mongoose.model<IBook> ('Book', bookSchema);
+const DbBook = mongoose.model<IBook> ('Book', bookModel);
 export default DbBook;

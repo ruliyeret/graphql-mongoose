@@ -1,4 +1,5 @@
 import {pubsub} from "../../index";
+import ActorType from "../types/Actor";
 
 const topic = "addActor";
 export const ActorSubscription = {
