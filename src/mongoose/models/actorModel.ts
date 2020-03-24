@@ -2,7 +2,6 @@
 import * as mongoose from 'mongoose';
 import {Schema} from "mongoose";
 
-
 export interface IActor extends Document{
     id: string;
     name: string;
@@ -13,6 +12,7 @@ export interface IActor extends Document{
 }
 const ActorSchema =  new Schema({
     id: {type : Schema.Types.ObjectId, require: true},
+    actorId:{type: Number},
     name: {type:String},
     height: {type: Number},
     gender: {type: String},

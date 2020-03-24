@@ -41,6 +41,7 @@ export class Controllers {
             .then(data => {
                 console.log("Got the data from api");
                 let actor = ActorModel({
+                    actorId:data.id,
                     name: data.name,
                     height: data.height,
                     gender: data.gender,
@@ -56,7 +57,5 @@ export class Controllers {
             .catch(err => {
                 console.log(err);
             });
-
-
     }
 }
