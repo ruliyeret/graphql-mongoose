@@ -4,6 +4,7 @@ import {RootActorQuery} from "../queries/rootActorQuiers";
 import {RootActorMutation} from "../mutations/rootActorMutation";
 import {RootBookMutation} from "../mutations/rootBookMutation";
 import {RootBookSubscription} from "../subscriptions/bookSubscription";
+import {RootActorSubscription} from "../subscriptions/actorSubscription";
 
 
 // TODO: to separate the queries to directory (book / Actor) and also the mutation types and
@@ -39,7 +40,8 @@ const RootSubscriber = new GraphQLObjectType({
     name: "Subscriber",
     description:" Root subscriber",
     fields :() => ({
-        ...RootBookSubscription
+        ...RootBookSubscription,
+        ...RootActorSubscription
     })
 });
 

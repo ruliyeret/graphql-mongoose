@@ -1,5 +1,5 @@
 import ActorModel from "../mongoose/models/actorModel";
-import fetch from "node-fetch"
+import {Api} from "../api/fetchActor";
 export class Controllers {
 
     public static  async getAllActors(req, res) {
@@ -14,7 +14,7 @@ export class Controllers {
     }
 
     public static async removeActor(req, res) {
-        console.log("Got request to get remove an actor");
+        console.log("Got request to get remove  an actor");
         const id  = req.data.body.id;
 
         try {
@@ -27,33 +27,17 @@ export class Controllers {
 
     public static async addSingleActor(req, res) {
         console.log("Got request to add  actor");
-
         const actorID= req.body.id;
-        const url  = 'https://swapi.co/api/people/' +actorID;
-        fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch.');
-                }
-                return response.json();
-            })
-            .then(data => {
-                let actor = ActorModel({
-                    actorId:data.id,
-                    name: data.name,
-                    height: data.height,
-                    gender: data.gender,
-                });
-                try {
-                    console.log("try to save actor " + actor)
+        const actor  = Api.getActorById(actorID);
+        if(actor){
+            console.log("try to save actor " + actor);
+            try {
                     let actorSaved =  ActorModel.add(actor);
-                    res.send(actorSaved);
-                }catch (e) {
-                    res.send("Cannot save actor");
-                }
-            })
-            .catch(err => {
-                console.log(err);
-            });
+                     res.send(actorSaved);
+            }catch (e) {
+                    console.log("Failed to save actor to mongodb")
+            }
+        }
+        res.send("Failed to add actor");
     }
 }

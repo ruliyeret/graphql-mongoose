@@ -16,15 +16,39 @@ export const RootActorMutation = {
             return BookResolves.deleteBookByActorId(args.ActorId);
         }
     },
-    addActor: {
+    AddActor: {
         type: ActorType,
-        description: "Add a Actor of book",
+        description: "Add a Actor",
         args: {
-            id: { type: GraphQLNonNull(GraphQLInt)},
-            name: {type : GraphQLNonNull(GraphQLString)}
+            actorId: { type: GraphQLNonNull(GraphQLInt)},
+            name: {type : GraphQLNonNull(GraphQLString)},
+            movieCount: {type:GraphQLInt},
+            height:{type: GraphQLString},
+            gender: {type: GraphQLString}
         },
         resolve: (parent, args) => {
-            return  ActorResolve.addActor(args.id, args.name);
+            return  ActorResolve.addActor(args);
+        }
+    },
+    addActorById: {
+        type: ActorType,
+        description:" Add Actor by id",
+        args:{
+            actorId: {type: GraphQLInt}
+        },
+        resolve: (parent, args) => {
+            return ActorResolve.addActorFromApiByID(args.actorId);
+        }
+
+    },
+    deleteActorByName: {
+        type:ActorType,
+        description: "Delete Actor by name",
+        args: {
+            name: {type:GraphQLString}
+        },
+        resolve:(parent, args) =>{
+            return ActorResolve.deleteActorByName(args.name)
         }
     }
 };

@@ -1,4 +1,4 @@
-import {GraphQLInt, GraphQLList} from "graphql";
+import {GraphQLInt, GraphQLList, GraphQLString} from "graphql";
 import ActorType from "../types/Actor";
 import ActorResolve from "../resolvers/ActorResolve";
 
@@ -16,4 +16,12 @@ export   const RootActorQuery = {
         },
         resolve: (parent, args)=> ActorResolve.getActorId(args.id)
     },
+    ActorByName: {
+        type: ActorType,
+        description: "Get specific Actor by name",
+        args: {
+            name: { type: GraphQLString }
+        },
+        resolve: (parent, args)=> ActorResolve.getActorByName(args.name)
+    }
 };

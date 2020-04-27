@@ -11,6 +11,7 @@ import {connectDb} from "./db/connect";
 export const pubsub = new PubSub();
 
 const PORT = 3001;
+
 const app = express();
 
 app.use(cors());

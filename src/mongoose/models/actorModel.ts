@@ -14,8 +14,9 @@ const ActorSchema =  new Schema({
     id: {type : Schema.Types.ObjectId, require: true},
     actorId:{type: Number},
     name: {type:String},
-    height: {type: Number},
+    height: {type: String},
     gender: {type: String},
+    movieCount: {type: Number}
 }, {collection:"Actor", versionKey: false});
 
 let ActorModel:any = mongoose.model("Actor", ActorSchema);
@@ -34,4 +35,13 @@ ActorModel.add = (actorToAdd) =>{
 ActorModel.delete = (actorId) => {
     ActorModel.deleteOne({id: actorId});
 };
+
+ActorModel.deleteByName = (actorName: string) => {
+    try {
+        console.log(`Try ro delete ' ${actorName}`);
+        return ActorModel.deleteOne({name: actorName});
+    }catch (e) {
+        console.log(`error while tried to delete actor with name : '${actorName}'`);
+    }
+}
 export default  ActorModel;
