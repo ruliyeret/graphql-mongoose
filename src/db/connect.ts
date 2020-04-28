@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {DBActorListenr} from "../mongoose/listener/DBactorWatch";
+import {DBActorListener} from "../mongoose/listener/DBactorWatch";
 
 export const  connectDb = () => {
     let mongoAddress = "mongodb://localhost:27017/?replicaSet=rs/test";
@@ -12,7 +12,7 @@ export const  connectDb = () => {
         db.once('open', () => {
             console.log("mongo db started");
             // DBbookListenr();
-            // DBActorListenr();
+             DBActorListener();
         });
     }catch (e) {
         console.log("Failed to connect mongo");
