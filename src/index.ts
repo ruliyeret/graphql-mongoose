@@ -26,8 +26,8 @@ server.installSubscriptionHandlers(httpServer);
 
 
 httpServer.listen({ port: PORT }, () => {
-        console.log(`🚀 Server ready at http://localhost:'${PORT}'/graphql`);
-        console.log(`🚀 Subscriptions  ready at ws://localhost:'${PORT}'/subscription`);
+       console.log(`🚀 Server ready at http://localhost:${PORT}${server.graphqlPath}`);
+       console.log(`🚀 Subscriptions ready at ws://localhost:${PORT}${server.subscriptionsPath}`);
         connectDb();
     }
 );
