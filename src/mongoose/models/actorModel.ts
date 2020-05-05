@@ -43,5 +43,9 @@ ActorModel.deleteByName = (actorName: string) => {
     }catch (e) {
         console.log(`error while tried to delete actor with name : '${actorName}'`);
     }
+};
+
+ActorModel.updateActorNameById = (actorId: number, name:string) => {
+    return ActorModel.updateOne({actorId: actorId}, {$set: {name: name}});
 }
 export default  ActorModel;

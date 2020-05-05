@@ -50,5 +50,17 @@ export const RootActorMutation = {
         resolve:(parent, args) =>{
             return ActorResolve.deleteActorByName(args.name)
         }
+    },
+
+    changeActorName: {
+        type: ActorType,
+        description: "Change actor name",
+        args :{
+            name: {type: GraphQLString},
+            actorId: {type: GraphQLInt}
+        },
+        resolve: (parent, args) => {
+            return ActorResolve.updateActorNameById(args.actorId, args.name);
+}
     }
 };

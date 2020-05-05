@@ -44,4 +44,9 @@ export default class ActorResolve {
         console.log(`Delete actor with name: '${name}'`);
         return await ActorModel.deleteByName(name);
     }
+
+    public static async  updateActorNameById(id: number, name: string) {
+        console.log(`update actor name ${name}  with id ${id}`);
+        return await ActorModel.updateActorNameById(id, name);
+    }
 }
